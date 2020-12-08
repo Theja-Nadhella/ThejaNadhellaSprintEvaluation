@@ -1,10 +1,12 @@
 package com.cg.timecard.exception;
 /**Author : Theja Nadhella*/
-
+ 
 public class EmployeeIdExceptionResponse {
 	private String empId;
 	
-	//Parameterized Constructor
+	/**Parameterized Constructor
+	 * @param empId
+	 */
 	public EmployeeIdExceptionResponse(String empId) {
 		super();
 		this.empId=empId;

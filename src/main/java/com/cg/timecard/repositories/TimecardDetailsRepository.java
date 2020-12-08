@@ -1,6 +1,6 @@
 package com.cg.timecard.repositories;
 
-/**Author: KrishVyas
+/**Author: Theja Nadhella 
  * Desc: Timecard details Repository Interface performing crud operations on timecard details*/
 
 import org.springframework.data.repository.CrudRepository;

@@ -13,14 +13,14 @@ public interface IEmployeeService {
 	 * @param employee
 	 * @return
 	 */
-	public Employee saveEmployee(Employee employee);
+	 Employee saveEmployee(Employee employee);
 
 	/**Delete an Employee
 	 * @param empId
 	 * @return 
 	 * @throws EmployeeIdException 
 	 */
-	public boolean deleteEmployee(String empId) throws EmployeeIdException;
+	 boolean deleteEmployee(String empId) throws EmployeeIdException;
 
 	/**Update an Employee
 	 * @param employee
@@ -28,18 +28,18 @@ public interface IEmployeeService {
 	 * @return
 	 * @throws EmployeeIdException 
 	 */
-	public Employee updateEmployee(Employee employee);
+	 Employee updateEmployee(Employee employee);
 
 	/**Show the list of all employees 
 	 * @return
 	 */
-	public Iterable<Employee> listAllEmployees();
+	 Iterable<Employee> listAllEmployees();
 
 	/**Display employee by his/her ID
 	 * @param empId
 	 * @return
 	 * @throws EmployeeIdException 
 	 */
-	public Employee listEmployeeById(String empId) throws EmployeeIdException;	
+	 Employee listEmployeeById(String empId) throws EmployeeIdException;	
 
 }

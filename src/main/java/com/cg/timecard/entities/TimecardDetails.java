@@ -1,9 +1,7 @@
 package com.cg.timecard.entities;
 
-/**Author:  KrishVyas
+/**Author:  ThejaNadhella
 Class Desc: Time card details Entity describing all attributes related to Timecard**/
-
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,9 +9,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-
 
 @Entity(name="timecard")
 public class TimecardDetails { 
@@ -24,29 +22,43 @@ public class TimecardDetails {
 	    private int id;
 		@Column(unique=true,updatable=false)
 		@NotNull(message = "Timecard ID is Required")
+		@Size(min=3,max=7)
 	    private String timecardId;	    
 	    @Column(name="Project_Id")
 		private int projectId;
 	    @Column(name="hours")
 	    private int hours;
 	    @JsonFormat(pattern= "dd-MM-yyyy")
-		private Date date;
+		private String date;
 		@NotNull(message = "Project Name is Required")
 		private String projectName;
 		@NotNull(message ="Initially, the Status is Pending")
 		private String timecardStatus;
 		@Column(unique=true,updatable=false)
-		private int empId;
+		@NotNull(message ="Employee ID is required")
+		@Size(min= 3, max = 6)
+		private String empId;
 		
-		/*no-argument constructor*/
+		
+		/**no-argument constructor
+		 */
 		public TimecardDetails() {
 			super();
 		}
-		/*This constructor initialize data members with the values of passed arguments while object of that class created.*/
-		public TimecardDetails(int id, String timecardId, int projectId, int hours, Date date, String projectName,String timecardStatus,int empId) {
+		/**This constructor initialize data members with the values of passed arguments while object of that class created
+		 * @param id
+		 * @param timecardId
+		 * @param projectId
+		 * @param hours
+		 * @param date
+		 * @param projectName
+		 * @param timecardStatus
+		 * @param empId
+		 */
+		public TimecardDetails(int id, String timecardId, int projectId, int hours, String date, String projectName,String timecardStatus,String empId) {
 			super();
 			this.id=id;
-			this.timecardId = timecardId;
+			this.timecardId = timecardId; 
 			this.projectId = projectId;
 			this.hours = hours;
 			this.date = date;
@@ -55,9 +67,10 @@ public class TimecardDetails {
 			this.empId=empId;
 		}
 		
-		/* Create getters and setter methods
-		 * Purpose :getter reads the value of a variable, setter updates the value of a variable */
-		
+		/**Create getters and setter methods
+		 * 
+		 * @return
+		 */	
 		public int getProjectId() {
 			return projectId;
 		}
@@ -82,10 +95,10 @@ public class TimecardDetails {
 		public void setProjectName(String projectName) {
 			this.projectName = projectName;
 		}
-		public Date getDate() {
+		public String getDate() {
 			return date;
 		}
-		public void setDate(Date date) {
+		public void setDate(String date) {
 			this.date = date;
 		}
 		public int getHours() {
@@ -100,20 +113,22 @@ public class TimecardDetails {
 		public void setTimecardStatus(String timecardStatus) {
 			this.timecardStatus = timecardStatus;
 		}
-		
-		public int getEmpId() {
+		public String getEmpId() {
 			return empId;
 		}
-		public void setEmpId(int empId) {
+		public void setEmpId(String empId) {
 			this.empId = empId;
 		}
-		/*toString method : when we need a string representation of an object(Not Mandatory)*/
-		@Override
-		public String toString() {
-			return "TimecardDetails [id=" + id + ", timecardId=" + timecardId + ", projectId=" + projectId + ", hours="
-					+ hours + ", date=" + date + ", projectName=" + projectName + ", timecardStatus=" + timecardStatus
-					+ ", empId=" + empId + "]";
+		/**cardinality that give relationship between two entities
+		
+		@ManyToOne(fetch=FetchType.LAZY, optional=false)		
+		
+		private Employee employee;
+		public Employee getEmployee() {
+			return employee;
 		}
-			
-
+		public void setEmployee(Employee employee) {
+			this.employee = employee;
+		} */
+		
 }

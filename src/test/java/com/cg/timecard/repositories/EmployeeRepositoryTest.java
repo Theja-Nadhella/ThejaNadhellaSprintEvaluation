@@ -28,8 +28,8 @@ class EmployeeRepositoryTest {
 		employee.setEmpId("108");
         employee.setEmpName("Theja Nadhella");
         employee.setEmpEmail("thejanadhella@gmail.com");
-        employee.setPhoneNumber("908765431");
-        employee.setSupervisorId(789);
+        employee.setPhoneNumber("9087654319");
+        employee.setSupervisorId("789");
         
 		employeeRepository.save(employee);
 		Assert.assertNotNull(employeeRepository.findByEmpId("108"));

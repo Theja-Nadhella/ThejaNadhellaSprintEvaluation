@@ -1,6 +1,8 @@
 package com.cg.timecard;
 
-
+/** Author : Theja Nadhella
+ * Desc: Main Method and starting point of spring application execution
+ */
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.boot.ApplicationArguments;

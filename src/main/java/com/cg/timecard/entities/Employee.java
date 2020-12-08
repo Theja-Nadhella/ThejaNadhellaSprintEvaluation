@@ -4,7 +4,6 @@ package com.cg.timecard.entities;
  * Project Desc: Time Card Service
  * Class Desc: Employee Entity describing all attributes related to employee**/
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,9 +11,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
-
-/*creating table with name employees*/
+/**creating table with name employees*/
 @Entity(name="employees")  
 public class Employee {
 	
@@ -25,23 +24,35 @@ public class Employee {
 	@Column(unique=true,updatable=false)
 	@JoinColumn(name="empId")
 	@NotNull(message = "Employee ID is Required")
+	@Size(min=3,max=6)
 	private String empId;
 	@NotNull(message = "Employee Name is Required")
 	private String empName;
 	@NotNull(message = "Employee phone number is Required")
+	@Size(min=10,max=10)
 	private String phoneNumber;
 	@NotNull(message = "Employee Email is Required")
 	private String empEmail;
-	@Column(name="supervisorId")
-	private int supervisorId;
+	@NotNull(message = "Supervisor Id is Required")
+	@Size(min=3,max=6)
+	private String supervisorId;
 	
-	/*no-argument constructor*/
+	/**no-argument constructor
+	 */
 	public Employee() {
-		
+		super();
 	}
 	
-    /*This constructor initialize data members with the values of passed arguments while object of that class created.*/
-	public Employee(int id, String empId, String empName, String phoneNumber,String empEmail, int supervisorId) {
+    /**This constructor initialize data members with the values of passed arguments while object of that class created
+     * 
+     * @param id
+     * @param empId
+     * @param empName 
+     * @param phoneNumber
+     * @param empEmail
+     * @param supervisorId
+     */
+	public Employee(int id, String empId, String empName, String phoneNumber,String empEmail, String supervisorId) {
 		super();
 		this.id=id;
 		this.empId = empId;
@@ -50,15 +61,9 @@ public class Employee {
 		this.empEmail = empEmail;
 		this.supervisorId = supervisorId;
 	}
-
-	 /* Create getters and setter methods */	 
-	public int getSupervisorId() {
-		return supervisorId;
-	}
-
-	public void setSupervisorId(int supervisorId) {
-		this.supervisorId = supervisorId;
-	}
+	 /**Create getters and setter methods  
+	  * @return
+	  */
 
 	public int getId() {
 		return id;
@@ -68,9 +73,14 @@ public class Employee {
 		this.id = id;
 	}
 
+	public String getEmpId() {
+		return empId;
+	}
+
 	public void setEmpId(String empId) {
 		this.empId = empId;
 	}
+
 	public String getEmpName() {
 		return empName;
 	}
@@ -95,26 +105,25 @@ public class Employee {
 		this.empEmail = empEmail;
 	}
 
-	@Override
-	public String toString() {
-		return "Employee [id=" + id + ", empId=" + empId + ", empName=" + empName + ", phoneNumber=" + phoneNumber
-				+ ", empEmail=" + empEmail + ", supervisorId=" + supervisorId + "]";
+	public String getSupervisorId() {
+		return supervisorId;
 	}
 
-	/**public List<TimecardDetails> getTimecard() {
-		return timecard;
-	}
-
-	public void setTimecard(List<TimecardDetails> timecard) {
-		this.timecard = timecard;
+	public void setSupervisorId(String supervisorId) {
+		this.supervisorId = supervisorId;
 	}
 	
-	/*Override Annotation : Subclass can implement a parent class method based on its requirement
-	@Override
-	public String toString() {
-		return "Employee [id=" + id + ", empId=" + empId + ", empName=" + empName + ", phoneNumber=" + phoneNumber
-				+ ", empEmail=" + empEmail + ", supervisorId=" + supervisorId + ", timecard=" + timecard + "]";
-	}*/
-	
+	/**one employee can fill time card once for a day
+	 * @OneToOne - Cardinality or Relationship between two entities
+	@OneToMany
+	private List<TimecardDetails> timecardDetails=new ArrayList<>();
+	public List<TimecardDetails> getTimecardDetails() {
+		return timecardDetails;
+	}
 
+	public void setTimecardDetails(List<TimecardDetails> timecardDetails) {
+		this.timecardDetails = timecardDetails;
+	}
+	*/
+	
 }

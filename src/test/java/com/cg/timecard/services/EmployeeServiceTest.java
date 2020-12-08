@@ -39,7 +39,7 @@ import com.cg.timecard.repositories.EmployeeRepository;
         employee.setEmpName("Theja");
         employee.setEmpEmail("theja@gmail.com");
         employee.setPhoneNumber("908765431");
-        employee.setSupervisorId(789);	
+        employee.setSupervisorId("789");	
         Mockito.when(employeeRepository.save(employee)).thenReturn(employee);
 		assertThat(employeeService.saveEmployee(employee)).isEqualTo(employee);	
 	}
@@ -56,13 +56,13 @@ import com.cg.timecard.repositories.EmployeeRepository;
         employee.setEmpName("Theja Nadhella");
         employee.setEmpEmail("thejanadhella@gmail.com");
         employee.setPhoneNumber("908765431");
-        employee.setSupervisorId(789);   
+        employee.setSupervisorId("789");   
         Mockito.when(employeeRepository.findByEmpId("100")).thenReturn(employee);
         assertThat(employeeService.listEmployeeById("100")).isEqualTo(employee);
 	}
 	
 	
-	/**This method Updates the employee details
+	/**This method checks for test cases for Updating the employee details
 	 * @throws Exception
 	 */
 	@Test
@@ -72,13 +72,13 @@ import com.cg.timecard.repositories.EmployeeRepository;
         employee.setEmpName("Theja N");
         employee.setEmpEmail("thejanadhella@gmail.com");
         employee.setPhoneNumber("90876431");
-        employee.setSupervisorId(789);  
+        employee.setSupervisorId("789");  
 		Mockito.when(employeeRepository.findByEmpId("109")).thenReturn(employee);
 		Mockito.when(employeeRepository.save(employee)).thenReturn(employee);
 		assertThat(employeeService.updateEmployee(employee)).isEqualTo(employee);		
 	}
 	
-	/**This method Lists all the employees
+	/**This method check for test cases for Listing all the employees
 	 * @throws Exception
 	 */
 	@Test
@@ -88,13 +88,13 @@ import com.cg.timecard.repositories.EmployeeRepository;
         employee.setEmpName("NTheja");
         employee.setEmpEmail("ntheja@gmail.com");
         employee.setPhoneNumber("90870000");
-        employee.setSupervisorId(78);
+        employee.setSupervisorId("78");
 
         employee.setEmpId("108");
         employee.setEmpName("Theja Nadhella");
         employee.setEmpEmail("thejanadhella@gmail.com");
         employee.setPhoneNumber("908765431");
-        employee.setSupervisorId(789);
+        employee.setSupervisorId("789");
         List<Employee> empList=new ArrayList<>();
         empList.add(employee);
         empList.add(employee);	    
@@ -102,7 +102,7 @@ import com.cg.timecard.repositories.EmployeeRepository;
         assertThat(employeeService.listAllEmployees()).isEqualTo(empList);
 	}
 	
-	/**this method deletes employee from employee list
+	/**this method checks test cases for deleting employee from employee list
 	 * @throws Exception
 	 */
 	@Test
@@ -112,7 +112,7 @@ import com.cg.timecard.repositories.EmployeeRepository;
         employee.setEmpName("Theja Nadhella");
         employee.setEmpEmail("thejanadhella@gmail.com");
         employee.setPhoneNumber("908765431");
-        employee.setSupervisorId(789);
+        employee.setSupervisorId("789");
         employeeRepository.save(employee);
         Mockito.when(employeeRepository.findByEmpId("100")).thenReturn(employee);
 		employeeService.deleteEmployee("100");

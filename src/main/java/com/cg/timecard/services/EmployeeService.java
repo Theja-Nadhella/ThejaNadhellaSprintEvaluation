@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import com.cg.timecard.entities.Employee;
 import com.cg.timecard.exception.EmployeeIdException;
 import com.cg.timecard.repositories.EmployeeRepository;
-
+ 
 @Service
 public class EmployeeService implements IEmployeeService {
 	@Autowired
@@ -28,18 +28,10 @@ public class EmployeeService implements IEmployeeService {
 	 */	
 	public boolean deleteEmployee(String empId)throws EmployeeIdException{
 		Employee emp=employeeRepository.findByEmpId(empId);
-		try {
-			if(emp==null) {
-				throw new EmployeeIdException("Employee with the given ID is not found");
-			}
-			else {
+			if(emp!=null) {
 				employeeRepository.deleteById(empId);
-				return true;
 			}
-		}
-		catch(EmployeeIdException e) {
-		return false;			        
-	}
+			return true;
 }
 	/**
 	 * this method updates employee in the database		
@@ -58,21 +50,9 @@ public class EmployeeService implements IEmployeeService {
 	 */	
 	@Override
 	public Employee listEmployeeById(String empId)throws EmployeeIdException {  
-		Employee emp=employeeRepository.findByEmpId(empId);
-		try {
-		    if(emp==null)
-			    throw new EmployeeIdException("Employee not found");
-		    else
-		    	return emp;
-		}
-		catch(EmployeeIdException e) {
-			return null;
-		}
+		return employeeRepository.findByEmpId(empId);
 	}
 
-	
-	
-	
 	/**
      * this method shows all employees available in the database
      * @return list of employees

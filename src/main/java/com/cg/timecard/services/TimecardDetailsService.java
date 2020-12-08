@@ -1,11 +1,11 @@
 package com.cg.timecard.services;
-
+/**Author: Theja Nadhella */
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cg.timecard.entities.TimecardDetails;
 import com.cg.timecard.repositories.TimecardDetailsRepository;
-
+ 
 @Service
 public class TimecardDetailsService implements ITimecardDetailsService {
 	@Autowired

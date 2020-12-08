@@ -1,5 +1,5 @@
 package com.cg.timecard.controllers;
-/**Author:Krish Vyas
+/**Author:Theja Nadhella
 * Desc: Accesses all the methods declared in service class*/
 import javax.validation.Valid;
 
@@ -35,7 +35,7 @@ public class TimecardDetailsController {
 	 * @param timecardDetails
 	 * @param result
 	 * @return
-	 */
+	 */ 
 	@PostMapping("/timecard")
 	public ResponseEntity<?> saveTimecardDetails(@Valid @RequestBody TimecardDetails timecardDetails, BindingResult result) throws TimecardIdException {
 		logger.info("Timecard Details are Saved");

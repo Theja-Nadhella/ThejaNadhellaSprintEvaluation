@@ -7,15 +7,18 @@ import org.springframework.http.HttpStatus;
 
 @ResponseStatus(HttpStatus.BAD_REQUEST)
 public class EmployeeIdException extends Exception {
-
+ 
 	private static final long serialVersionUID = 1L;
 	
-	//No-arg Constructor
+	/**No argument constructor
+	 */
 	public EmployeeIdException() {
 		super();
 	}
 	
-	//Parameterized constructor
+	/**Parameterized constructor 
+	 * @param message
+	 */
 	public EmployeeIdException(String message) {
 		super(message);
 	}

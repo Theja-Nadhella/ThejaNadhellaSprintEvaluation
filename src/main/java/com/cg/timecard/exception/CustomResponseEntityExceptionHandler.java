@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.WebRequest;
-
+ 
 @ControllerAdvice
 @RestController
 public class CustomResponseEntityExceptionHandler{
@@ -37,7 +37,7 @@ public class CustomResponseEntityExceptionHandler{
 	@ExceptionHandler
 	public final ResponseEntity<Object> handleTimecardIdException(TimecardIdException ex, WebRequest request)
 	{
-		TimecardIdException exceptionResponse=new TimecardIdException(ex.getMessage());
+		TimecardIdExceptionResponse exceptionResponse=new TimecardIdExceptionResponse(ex.getMessage());
 		return new ResponseEntity<>(exceptionResponse,HttpStatus.BAD_REQUEST);
 				
 	}
